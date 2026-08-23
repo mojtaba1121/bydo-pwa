@@ -1,0 +1,12 @@
+{
+  "name": "بایدو",
+  "short_name": "بایدو",
+  "theme_color": "#287816",
+  "background_color": "#f7f9f5",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "dir": "rtl",
+  "lang": "fa",
+  "icons": []
+}
