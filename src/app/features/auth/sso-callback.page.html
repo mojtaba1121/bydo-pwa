@@ -4,13 +4,13 @@
 
     @if (loading) {
       <span class="status-icon loading"><lucide-icon name="shield-check" /></span>
-      <h1>در حال تکمیل ورود یکپارچه</h1>
-      <p class="muted">اطلاعات بازگشتی از سامانه سازمانی بررسی می‌شه.</p>
+      <h1>{{ 'ssoLoadingTitle' | t }}</h1>
+      <p class="muted">{{ 'ssoLoadingText' | t }}</p>
     } @else {
       <span class="status-icon error"><lucide-icon name="octagon-alert" /></span>
-      <h1>ورود انجام نشد</h1>
+      <h1>{{ 'authFailed' | t }}</h1>
       <p class="muted">{{ errorMessage }}</p>
-      <button class="btn primary wide" type="button" (click)="goLogin()">بازگشت به ورود</button>
+      <button class="btn primary wide" type="button" (click)="goLogin()">{{ 'backToLogin' | t }}</button>
     }
   </section>
 </main>

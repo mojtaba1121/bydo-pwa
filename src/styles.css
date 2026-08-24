@@ -8,9 +8,13 @@
   --primary-soft: #deeedb;
   --primary-mid: #7cbc6d;
   --ink: #001200;
+  --hero-bg: #001200;
   --text: #1a1a1a;
   --muted: #757575;
   --surface: #f7f9f5;
+  --card: #fff;
+  --field: #fff;
+  --alert-surface: #fff0f0;
   --line: #e5e9e2;
   --line-strong: #cbd2c7;
   --danger: #b33e3e;
@@ -24,6 +28,29 @@
   font-synthesis: none;
 }
 
+:root[data-theme='dark'] {
+  --primary: #7cbc6d;
+  --primary-dark: #9dcd92;
+  --primary-deep: #deeedb;
+  --primary-soft: rgba(124, 188, 109, .16);
+  --primary-mid: #9dcd92;
+  --ink: #f4fbf1;
+  --hero-bg: #001200;
+  --text: #eef6eb;
+  --muted: #c0cdbb;
+  --surface: #061105;
+  --card: #142512;
+  --field: #091809;
+  --alert-surface: rgba(179, 62, 62, .16);
+  --line: rgba(189, 221, 182, .18);
+  --line-strong: rgba(189, 221, 182, .34);
+  --danger: #ff9b9b;
+  --shadow-sm: 0 3px 12px rgba(0, 0, 0, .3);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, .38);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, .42);
+  --shadow-green: 0 8px 20px rgba(124, 188, 109, .18);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -35,8 +62,43 @@ body {
   background: var(--surface);
 }
 
+:root[data-theme='dark'] .auth-card,
+:root[data-theme='dark'] .callback-card,
+:root[data-theme='dark'] .station-sheet,
+:root[data-theme='dark'] .reservation-card,
+:root[data-theme='dark'] .ride-sheet,
+:root[data-theme='dark'] .scanner-footer,
+:root[data-theme='dark'] .topbar,
+:root[data-theme='dark'] .detail-top,
+:root[data-theme='dark'] .searchbox,
+:root[data-theme='dark'] .list article,
+:root[data-theme='dark'] .profile-head,
+:root[data-theme='dark'] .simple > header,
+:root[data-theme='dark'] .bike-card {
+  background: var(--card);
+  color: var(--text);
+  border-color: var(--line);
+}
+
+:root[data-theme='dark'] input,
+:root[data-theme='dark'] textarea {
+  color: var(--text);
+}
+
+:root[data-theme='dark'] .phone-field,
+:root[data-theme='dark'] .otp-field {
+  background: var(--field);
+}
+
+:root[data-theme='dark'] .btn.secondary,
+:root[data-theme='dark'] .icon-btn {
+  background: #142212;
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
 body {
-  direction: rtl;
+  direction: inherit;
   font-family: var(--font-family-base);
   font-variant-numeric: tabular-nums;
 }
@@ -117,7 +179,7 @@ a {
 }
 
 .btn.secondary {
-  background: #fff;
+  background: var(--card);
   color: var(--ink);
   border: 1px solid var(--line-strong);
 }

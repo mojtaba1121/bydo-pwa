@@ -4,13 +4,15 @@ import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { LucideAngularModule } from 'lucide-angular';
 import { AuthSessionService } from '../../core/auth-session.service';
+import { I18nService, TranslatePipe } from '../../core/i18n.service';
+import { LanguageService, ThemeService } from '../../core/preferences.service';
 import { SubscriberAuthService } from '../../core/subscriber-auth.service';
 import { BrandComponent } from '../../shared/ui';
 import { toAuthErrorMessage } from './auth-error';
 
 @Component({
   standalone: true,
-  imports: [FormsModule, BrandComponent, LucideAngularModule],
+  imports: [FormsModule, BrandComponent, LucideAngularModule, TranslatePipe],
   templateUrl: './login.page.html',
   styleUrl: './login.page.css'
 })
@@ -18,6 +20,9 @@ export class LoginPage {
   private readonly router = inject(Router);
   private readonly auth = inject(SubscriberAuthService);
   private readonly session = inject(AuthSessionService);
+  private readonly i18n = inject(I18nService);
+  readonly language = inject(LanguageService);
+  readonly theme = inject(ThemeService);
 
   step: 'mobile' | 'otp' = 'mobile';
   mobile: string = '';
@@ -49,6 +54,14 @@ export class LoginPage {
     this.otpCode = toEnglishDigits(value).replace(/\D/g, '').slice(0, 5);
   }
 
+  toggleLanguage() {
+    this.language.toggleLanguage();
+  }
+
+  toggleTheme() {
+    this.theme.toggleTheme();
+  }
+
   requestOtp() {
     if (!this.isMobileValid || this.loading) {
       return;
@@ -66,7 +79,7 @@ export class LoginPage {
           this.otpCode = '';
         },
         error: (error: unknown) => {
-          this.errorMessage = toAuthErrorMessage(error);
+          this.errorMessage = toAuthErrorMessage(error, (key) => this.i18n.t(key));
         }
       });
   }
@@ -88,7 +101,7 @@ export class LoginPage {
           void this.router.navigateByUrl('/map');
         },
         error: (error: unknown) => {
-          this.errorMessage = toAuthErrorMessage(error);
+          this.errorMessage = toAuthErrorMessage(error, (key) => this.i18n.t(key));
         }
       });
   }
@@ -113,7 +126,7 @@ export class LoginPage {
         },
         error: (error: unknown) => {
           sessionStorage.removeItem('bydo.sso.state');
-          this.errorMessage = toAuthErrorMessage(error);
+          this.errorMessage = toAuthErrorMessage(error, (key) => this.i18n.t(key));
         }
       });
   }

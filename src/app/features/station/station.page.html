@@ -1,51 +1,48 @@
 <main class="app-shell page-bg">
-    <header class="detail-top">
-        <a routerLink="/map" class="icon-btn"><lucide-icon name="arrow-right" /></a>
-        <div><small>ایستگاه انتخابی</small><strong>{{ station.name }}</strong></div>
-        <button class="icon-btn"><lucide-icon name="navigation" /></button>
-    </header>
-    <section class="station-hero">
-        <div class="station-info">
-            <p><lucide-icon name="map-pin" /> {{ station.address }} · {{ station.distance }}</p>
+  <header class="detail-top">
+    <a routerLink="/map" class="icon-btn"><lucide-icon name="arrow-right" /></a>
+    <div><small>{{ 'selectedStation' | t }}</small><strong>{{ station.name | t }}</strong></div>
+    <button class="icon-btn"><lucide-icon name="navigation" /></button>
+  </header>
+  <section class="station-hero">
+    <div class="station-info">
+      <p><lucide-icon name="map-pin" /> {{ station.address | t }} · {{ station.distance | t }}</p>
+      <div>
+        <span><b>{{ station.bikes | faNumber }}</b> {{ 'bikesReady' | t }}</span>
+        <span><b>{{ station.docks | faNumber }}</b> {{ 'docksEmpty' | t }}</span>
+      </div>
+    </div>
+  </section>
+  <section class="content">
+    <div class="section-title">
+      <div>
+        <p class="eyebrow">{{ 'vehicleSelect' | t }}</p>
+        <h1>{{ 'stationBikes' | t }}</h1>
+      </div>
+      <span>{{ bikes.length | faNumber }} {{ 'item' | t }}</span>
+    </div>
+    <div class="bike-list">
+      @for (bike of bikes; track bike.id) {
+        <article class="bike-card" [class.disabled]="!isBikeReady(bike.status)">
+          <div class="bike-thumb"><lucide-icon name="bike" [size]="48" /></div>
+          <div class="bike-meta">
             <div>
-                <span><b>{{ station.bikes | faNumber }}</b> دوچرخه آماده</span
-                ><span><b>{{ station.docks | faNumber }}</b> جایگاه خالی</span>
+              <strong class="technical-code">{{ bike.id }}</strong>
+              <span class="type"><lucide-icon name="zap" />{{ bike.type | t }}</span>
             </div>
-        </div>
-    </section>
-    <section class="content">
-        <div class="section-title">
-            <div>
-                <p class="eyebrow">انتخاب وسیله</p>
-                <h1>دوچرخه‌های این ایستگاه</h1>
-            </div>
-            <span>{{ bikes.length | faNumber }} مورد</span>
-        </div>
-        <div class="bike-list">
-            @for (bike of bikes; track bike.id) {
-            <article class="bike-card" [class.disabled]="bike.status !== 'آماده'">
-                <div class="bike-thumb"><lucide-icon name="bike" [size]="48" /></div>
-                <div class="bike-meta">
-                    <div>
-                        <strong class="technical-code">{{ bike.id }}</strong
-                        ><span class="type"><lucide-icon name="zap" />{{ bike.type }}</span>
-                    </div>
-                    <p><lucide-icon name="shield-check" /> {{ bike.status }}</p>
-                    @if(bike.type==='برقی'){
-                    <div class="battery"><i [style.width.%]="bike.battery"></i></div>
-                    <small
-                        ><lucide-icon name="battery-charging" /> شارژ {{ bike.battery | faNumber }}٪ · برد {{ bike.range
-                        | faNumber }} کیلومتر</small
-                    >}
-                </div>
-                <a
-                    [routerLink]="bike.status === 'آماده' ? ['/reservation',bike.id] : null"
-                    class="select-btn"
-                    [attr.aria-disabled]="bike.status !== 'آماده'"
-                    ><span>انتخاب</span><lucide-icon name="chevron-left"
-                /></a>
-            </article>
+            <p><lucide-icon name="shield-check" /> {{ bike.status | t }}</p>
+            @if(isElectricBike(bike.type)){
+              <div class="battery"><i [style.width.%]="bike.battery"></i></div>
+              <small><lucide-icon name="battery-charging" /> {{ 'charge' | t }} {{ bike.battery | faNumber }}% · {{ 'range' | t }} {{ bike.range | faNumber }} {{ 'km' | t }}</small>
             }
-        </div>
-    </section>
+          </div>
+          <a
+            [routerLink]="isBikeReady(bike.status) ? ['/reservation',bike.id] : null"
+            class="select-btn"
+            [attr.aria-disabled]="!isBikeReady(bike.status)"
+          ><span>{{ 'select' | t }}</span><lucide-icon name="chevron-left" /></a>
+        </article>
+      }
+    </div>
+  </section>
 </main>

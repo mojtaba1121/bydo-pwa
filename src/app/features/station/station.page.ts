@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
+import { TranslatePipe } from '../../core/i18n.service';
 import { BIKES, STATIONS } from '../../core/models';
 import { FaNumberPipe } from '../../shared/fa-number.pipe';
 
 @Component({
   standalone: true,
-  imports: [RouterLink, FaNumberPipe, LucideAngularModule],
+  imports: [RouterLink, FaNumberPipe, LucideAngularModule, TranslatePipe],
   templateUrl: './station.page.html',
   styleUrl: './station.page.css'
 })
@@ -20,5 +21,13 @@ export class StationPage {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.station = STATIONS.find((station) => station.id === id) ?? STATIONS[0];
+  }
+
+  isBikeReady(status: string) {
+    return status === 'آماده';
+  }
+
+  isElectricBike(type: string) {
+    return type === 'برقی';
   }
 }

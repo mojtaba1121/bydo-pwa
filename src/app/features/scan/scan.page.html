@@ -1,27 +1,27 @@
 <main class="scanner">
-    <header>
-        <a routerLink="/map"><lucide-icon name="arrow-right" /></a><strong>اسکن دوچرخه</strong><span></span>
-    </header>
-    <section class="camera">
-        <div class="scan-copy">
-            <span class="qr-icon"><lucide-icon name="qr-code" /></span>
-            <h1>کد روی فرمان را اسکن کن</h1>
-            <p>دوربین را مقابل QR دوچرخه نگه دار</p>
-        </div>
-        <button class="scan-area" (click)="unlock()" aria-label="شبیه‌سازی اسکن کد">
-            <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i><span class="laser"></span>
-            <div class="fake-qr"><b></b><b></b><b></b><b></b><b></b></div>
-        </button>
-        <div class="camera-actions">
-            <button><lucide-icon name="flashlight" /><span>چراغ</span></button
-            ><button><lucide-icon name="image" /><span>گالری</span></button>
-        </div>
-    </section>
-    <section class="scanner-footer">
-        <div>
-            <lucide-icon name="shield-check" />
-            <p><strong>قفل امن بایدو</strong><br />بعد از تأیید کد، قفل به‌صورت خودکار باز می‌شود.</p>
-        </div>
-        <button class="btn secondary wide"><lucide-icon name="keyboard" /> وارد کردن کد به‌صورت دستی</button>
-    </section>
+  <header>
+    <a routerLink="/map"><lucide-icon name="arrow-right" /></a><strong>{{ 'scanTitle' | t }}</strong><span></span>
+  </header>
+  <section class="camera">
+    <div class="scan-copy">
+      <span class="qr-icon"><lucide-icon name="qr-code" /></span>
+      <h1>{{ 'scanHeading' | t }}</h1>
+      <p>{{ 'scanHelp' | t }}</p>
+    </div>
+    <button class="scan-area" (click)="unlock()" [attr.aria-label]="'scanTitle' | t">
+      <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i><span class="laser"></span>
+      <div class="fake-qr"><b></b><b></b><b></b><b></b><b></b></div>
+    </button>
+    <div class="camera-actions">
+      <button><lucide-icon name="flashlight" /><span>{{ 'flashlight' | t }}</span></button>
+      <button><lucide-icon name="image" /><span>{{ 'gallery' | t }}</span></button>
+    </div>
+  </section>
+  <section class="scanner-footer">
+    <div>
+      <lucide-icon name="shield-check" />
+      <p><strong>{{ 'safeLock' | t }}</strong><br />{{ 'autoUnlockCopy' | t }}</p>
+    </div>
+    <button class="btn secondary wide"><lucide-icon name="keyboard" /> {{ 'manualCode' | t }}</button>
+  </section>
 </main>

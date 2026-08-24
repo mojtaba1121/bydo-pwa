@@ -7,6 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#287816">
   <meta name="description" content="رزرو و استفاده آسان از دوچرخه‌های اشتراکی بایدو">
+  <script>
+    (() => {
+      const language = localStorage.getItem('bydo.language') === 'en' ? 'en' : 'fa';
+      const storedTheme = localStorage.getItem('bydo.theme');
+      const source = storedTheme === 'light' || storedTheme === 'dark' || storedTheme === 'system' ? storedTheme : 'system';
+      const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+      const theme = source === 'system' ? (prefersDark ? 'dark' : 'light') : source;
+
+      document.documentElement.lang = language;
+      document.documentElement.dir = language === 'fa' ? 'rtl' : 'ltr';
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+    })();
+  </script>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="favicon.svg">
 </head>

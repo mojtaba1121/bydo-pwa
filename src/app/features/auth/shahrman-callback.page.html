@@ -4,13 +4,13 @@
 
     @if (loading) {
       <span class="status-icon loading"><lucide-icon name="shield-check" /></span>
-      <h1>در حال بررسی ورود شهر من</h1>
-      <p class="muted">چند لحظه صبر کن تا احراز هویت کامل بشه.</p>
+      <h1>{{ 'shahrmanLoadingTitle' | t }}</h1>
+      <p class="muted">{{ 'shahrmanLoadingText' | t }}</p>
     } @else {
       <span class="status-icon error"><lucide-icon name="octagon-alert" /></span>
-      <h1>ورود انجام نشد</h1>
+      <h1>{{ 'authFailed' | t }}</h1>
       <p class="muted">{{ errorMessage }}</p>
-      <button class="btn primary wide" type="button" (click)="goLogin()">بازگشت به ورود</button>
+      <button class="btn primary wide" type="button" (click)="goLogin()">{{ 'backToLogin' | t }}</button>
     }
   </section>
 </main>

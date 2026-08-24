@@ -3,13 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { LucideAngularModule } from 'lucide-angular';
 import { AuthSessionService } from '../../core/auth-session.service';
+import { I18nService, TranslatePipe } from '../../core/i18n.service';
 import { SubscriberAuthService } from '../../core/subscriber-auth.service';
 import { BrandComponent } from '../../shared/ui';
 import { toAuthErrorMessage } from './auth-error';
 
 @Component({
   standalone: true,
-  imports: [BrandComponent, LucideAngularModule],
+  imports: [BrandComponent, LucideAngularModule, TranslatePipe],
   templateUrl: './sso-callback.page.html',
   styleUrl: './sso-callback.page.css'
 })
@@ -18,6 +19,7 @@ export class SsoCallbackPage {
   private readonly router = inject(Router);
   private readonly auth = inject(SubscriberAuthService);
   private readonly session = inject(AuthSessionService);
+  private readonly i18n = inject(I18nService);
 
   loading = true;
   errorMessage = '';
@@ -29,12 +31,12 @@ export class SsoCallbackPage {
     const expectedState = sessionStorage.getItem('bydo.sso.state');
 
     if (!username || !refreshToken || !state) {
-      this.fail('اطلاعات بازگشتی ورود یکپارچه ناقص است.');
+      this.fail(this.i18n.t('ssoMissingCallback'));
       return;
     }
 
     if (expectedState && state !== expectedState) {
-      this.fail('درخواست ورود یکپارچه معتبر نیست. دوباره از صفحه ورود اقدام کن.');
+      this.fail(this.i18n.t('ssoInvalidState'));
       return;
     }
 
@@ -48,7 +50,7 @@ export class SsoCallbackPage {
           void this.router.navigateByUrl('/map');
         },
         error: (error: unknown) => {
-          this.errorMessage = toAuthErrorMessage(error);
+          this.errorMessage = toAuthErrorMessage(error, (key) => this.i18n.t(key));
         }
       });
   }

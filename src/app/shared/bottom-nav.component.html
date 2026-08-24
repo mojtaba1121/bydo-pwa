@@ -1,6 +1,6 @@
-<nav class="bottom-nav" aria-label="ناوبری اصلی">
-    <a routerLink="/map" routerLinkActive="active"><lucide-icon name="map"/><span>نقشه</span></a>
-    <a routerLink="/trips" routerLinkActive="active"><lucide-icon name="clock-3"/><span>سفرها</span></a>
-    <a routerLink="/wallet" routerLinkActive="active"><lucide-icon name="wallet-cards"/><span>کیف پول</span></a>
-    <a routerLink="/profile" routerLinkActive="active"><lucide-icon name="circle-user-round"/><span>حساب</span></a>
+<nav class="bottom-nav" [attr.aria-label]="'mainNav' | t">
+  <a routerLink="/map" routerLinkActive="active"><lucide-icon name="map" /><span>{{ 'navMap' | t }}</span></a>
+  <a routerLink="/trips" routerLinkActive="active"><lucide-icon name="clock-3" /><span>{{ 'navTrips' | t }}</span></a>
+  <a routerLink="/wallet" routerLinkActive="active"><lucide-icon name="wallet-cards" /><span>{{ 'navWallet' | t }}</span></a>
+  <a routerLink="/profile" routerLinkActive="active"><lucide-icon name="circle-user-round" /><span>{{ 'navAccount' | t }}</span></a>
 </nav>

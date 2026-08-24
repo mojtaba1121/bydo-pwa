@@ -1,56 +1,55 @@
 <main class="app-shell map-page">
-    <header class="topbar">
-        <bydo-brand />
-        <div class="greeting"><small>عصر بخیر،</small><strong>همراه بایدو 👋</strong></div>
-        <button class="icon-btn"><lucide-icon name="bell" /><i></i></button>
-    </header>
-    <section class="map-canvas">
-        <div class="search-row">
-            <div class="searchbox">
-                <lucide-icon name="search" /><input aria-label="جستجوی مقصد" placeholder="کجا می‌خوای بری؟" /><button>
-                    <lucide-icon name="sliders-horizontal" />
-                </button>
-            </div>
+  <header class="topbar">
+    <bydo-brand />
+    <div class="greeting"><small>{{ 'goodEvening' | t }}</small><strong>{{ 'bydoCompanion' | t }}</strong></div>
+    <button class="icon-btn"><lucide-icon name="bell" /><i></i></button>
+  </header>
+  <section class="map-canvas">
+    <div class="search-row">
+      <div class="searchbox">
+        <lucide-icon name="search" />
+        <input [attr.aria-label]="'destinationSearchAria' | t" [placeholder]="'destinationSearch' | t" />
+        <button><lucide-icon name="sliders-horizontal" /></button>
+      </div>
+    </div>
+    <div class="street s1"></div>
+    <div class="street s2"></div>
+    <div class="street s3"></div>
+    <div class="park"></div>
+    <span class="place p1">{{ 'parkMellat' | t }}</span><span class="place p2">{{ 'keshavarzBlvd' | t }}</span>
+    @for (station of stations; track station.id) {
+      <a
+        class="station-pin"
+        [class.featured]="station.featured"
+        [style.left.%]="station.x"
+        [style.top.%]="station.y"
+        [routerLink]="['/station',station.id]"
+        [attr.aria-label]="station.name | t"
+      ><span><lucide-icon name="bike" /></span><b>{{ station.bikes | faNumber }}</b></a>
+    }
+    <div class="map-tools">
+      <button><lucide-icon name="plus" /></button>
+      <button><lucide-icon name="minus" /></button>
+      <button class="locate"><lucide-icon name="locate-fixed" /></button>
+    </div>
+    <span class="user-location"><i></i><b><lucide-icon name="navigation" /></b></span>
+    <div class="station-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-head">
+        <div>
+          <small>{{ 'nearestStation' | t }}</small>
+          <h2>{{ selected.name | t }}</h2>
+          <p><lucide-icon name="map-pin" /> {{ selected.address | t }} · {{ selected.distance | t }}</p>
         </div>
-        <div class="street s1"></div>
-        <div class="street s2"></div>
-        <div class="street s3"></div>
-        <div class="park"></div>
-        <span class="place p1">پارک ملت</span><span class="place p2">بلوار کشاورز</span> @for (station of stations;
-        track station.id) {
-        <a
-            class="station-pin"
-            [class.featured]="station.featured"
-            [style.left.%]="station.x"
-            [style.top.%]="station.y"
-            [routerLink]="['/station',station.id]"
-            [attr.aria-label]="station.name"
-            ><span><lucide-icon name="bike" /></span><b>{{ station.bikes | faNumber }}</b></a
-        >
-        }
-        <div class="map-tools">
-            <button><lucide-icon name="plus" /></button><button><lucide-icon name="minus" /></button
-            ><button class="locate"><lucide-icon name="locate-fixed" /></button>
-        </div>
-        <span class="user-location"
-            ><i></i><b><lucide-icon name="navigation" /></b
-        ></span>
-        <div class="station-sheet">
-            <div class="sheet-handle"></div>
-            <div class="sheet-head">
-                <div>
-                    <small>نزدیک‌ترین ایستگاه</small>
-                    <h2>{{ selected.name }}</h2>
-                    <p><lucide-icon name="map-pin" /> {{ selected.address }} · {{ selected.distance }}</p>
-                </div>
-                <a class="direction"><lucide-icon name="navigation" />مسیریابی</a>
-            </div>
-            <div class="availability">
-                <span><i class="green"></i><strong>{{ selected.bikes | faNumber }}</strong> دوچرخه آماده</span
-                ><span><i></i><strong>{{ selected.docks | faNumber }}</strong> جایگاه خالی</span
-                ><a [routerLink]="['/station',selected.id]">مشاهده دوچرخه‌ها</a>
-            </div>
-        </div>
-    </section>
-    <bydo-scan-button /><bydo-bottom-nav />
+        <a class="direction"><lucide-icon name="navigation" />{{ 'directions' | t }}</a>
+      </div>
+      <div class="availability">
+        <span><i class="green"></i><strong>{{ selected.bikes | faNumber }}</strong> {{ 'bikesReady' | t }}</span>
+        <span><i></i><strong>{{ selected.docks | faNumber }}</strong> {{ 'docksEmpty' | t }}</span>
+        <a [routerLink]="['/station',selected.id]">{{ 'viewBikes' | t }}</a>
+      </div>
+    </div>
+  </section>
+  <bydo-scan-button />
+  <bydo-bottom-nav />
 </main>

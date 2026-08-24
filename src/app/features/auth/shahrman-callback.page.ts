@@ -3,13 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { LucideAngularModule } from 'lucide-angular';
 import { AuthSessionService } from '../../core/auth-session.service';
+import { I18nService, TranslatePipe } from '../../core/i18n.service';
 import { SubscriberAuthService } from '../../core/subscriber-auth.service';
 import { BrandComponent } from '../../shared/ui';
 import { toAuthErrorMessage } from './auth-error';
 
 @Component({
   standalone: true,
-  imports: [BrandComponent, LucideAngularModule],
+  imports: [BrandComponent, LucideAngularModule, TranslatePipe],
   templateUrl: './shahrman-callback.page.html',
   styleUrl: './shahrman-callback.page.css'
 })
@@ -18,6 +19,7 @@ export class ShahrManCallbackPage {
   private readonly router = inject(Router);
   private readonly auth = inject(SubscriberAuthService);
   private readonly session = inject(AuthSessionService);
+  private readonly i18n = inject(I18nService);
 
   loading = true;
   errorMessage = '';
@@ -26,7 +28,7 @@ export class ShahrManCallbackPage {
     const token = this.route.snapshot.queryParamMap.get('user')?.trim();
 
     if (!token) {
-      this.fail('اطلاعات ورود شهر من ناقص است.');
+      this.fail(this.i18n.t('shahrmanMissingCallback'));
       return;
     }
 
@@ -39,7 +41,7 @@ export class ShahrManCallbackPage {
           void this.router.navigateByUrl('/map');
         },
         error: (error: unknown) => {
-          this.errorMessage = toAuthErrorMessage(error);
+          this.errorMessage = toAuthErrorMessage(error, (key) => this.i18n.t(key));
         }
       });
   }

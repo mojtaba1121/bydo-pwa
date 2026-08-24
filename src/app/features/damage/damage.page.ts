@@ -1,11 +1,13 @@
 import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
+import { TranslatePipe } from '../../core/i18n.service';
+import { FaNumberPipe } from '../../shared/fa-number.pipe';
 import { BikeVisualComponent } from '../../shared/ui';
 
 @Component({
   standalone: true,
-  imports: [RouterLink, BikeVisualComponent, LucideAngularModule],
+  imports: [RouterLink, BikeVisualComponent, LucideAngularModule, TranslatePipe, FaNumberPipe],
   templateUrl: './damage.page.html',
   styleUrl: './damage.page.css'
 })

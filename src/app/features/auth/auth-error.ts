@@ -1,17 +1,19 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ApiErrorResponse, ApiResponse } from '../../core/auth.models';
 
-export function toAuthErrorMessage(error: unknown): string {
+type TranslateFn = (key: string) => string;
+
+export function toAuthErrorMessage(error: unknown, t: TranslateFn = (key) => key): string {
   if (!(error instanceof HttpErrorResponse)) {
     if (error instanceof Error && error.message) {
       return error.message;
     }
 
-    return 'درخواست انجام نشد. دوباره تلاش کن.';
+    return t('authErrorGeneric');
   }
 
   if (error.status === 0) {
-    return 'ارتباط با سرور برقرار نشد. اینترنت یا آدرس سرویس را بررسی کن.';
+    return t('authErrorNetwork');
   }
 
   const body = error.error as Partial<ApiResponse<unknown>> & ApiErrorResponse & { message?: string };
@@ -26,14 +28,14 @@ export function toAuthErrorMessage(error: unknown): string {
   }
 
   if (Array.isArray(body?.errors) && body.errors.length > 0) {
-    return body.errors[0] ?? 'اطلاعات واردشده معتبر نیست.';
+    return body.errors[0] ?? t('authErrorInvalidFields');
   }
 
   if (error.status === 401 || error.status === 403) {
-    return 'کد تأیید درست نیست یا منقضی شده است.';
+    return t('authErrorInvalidOtp');
   }
 
-  return 'درخواست انجام نشد. دوباره تلاش کن.';
+  return t('authErrorGeneric');
 }
 
 function firstValidationMessage(error: ApiErrorResponse | null | undefined): string | null {
