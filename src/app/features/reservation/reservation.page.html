@@ -1,0 +1,37 @@
+<main class="app-shell page-bg">
+    <header class="detail-top">
+        <a routerLink="/map" class="icon-btn"><lucide-icon name="arrow-right" /></a><strong>رزرو دوچرخه</strong
+        ><span></span>
+    </header>
+    <section class="reserve-wrap">
+        <div class="success-mark"><lucide-icon name="check-circle-2" /></div>
+        <p class="eyebrow">با موفقیت رزرو شد</p>
+        <h1>دوچرخه منتظر شماست</h1>
+        <p class="lead">تا پایان زمان رزرو خودت را به ایستگاه برسون و قفل دوچرخه رو باز کن.</p>
+        <article class="reservation-card">
+            <div class="timer">
+                <div class="timer-ring" [style.--progress]="progress()+'deg'">
+                    <span
+                        ><strong>{{ minutes() | faNumber }}:{{ seconds() | faNumber }}</strong
+                        ><small>زمان باقی‌مانده</small></span
+                    >
+                </div>
+            </div>
+            <bydo-bike-visual [size]="105" />
+            <div class="bike-details">
+                <span><small>کد دوچرخه</small><strong>{{ bikeId }}</strong></span
+                ><span
+                    ><small>محل دریافت</small><strong><lucide-icon name="map-pin" /> پارک ملت</strong></span
+                >
+            </div>
+        </article>
+        <a class="btn primary wide big" routerLink="/scan"><lucide-icon name="qr-code" /> اسکن کد و باز کردن قفل</a
+        ><a class="report-link" [routerLink]="['/damage',bikeId]"
+            ><lucide-icon name="wrench" /> دوچرخه مشکلی دارد؟ گزارش خرابی</a
+        >
+        <div class="notice">
+            <lucide-icon name="shield-check" />
+            <p><strong>رزرو رایگان است</strong><br />هزینه سفر فقط بعد از باز شدن قفل محاسبه می‌شود.</p>
+        </div>
+    </section>
+</main>

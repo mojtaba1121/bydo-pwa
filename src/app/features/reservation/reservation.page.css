@@ -1,0 +1,176 @@
+.detail-top {
+    height: 64px;
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+    background: #fff;
+    border-bottom: 1px solid var(--line)
+}
+
+.reserve-wrap {
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    padding: 1.3rem
+}
+
+.success-mark {
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--primary-soft);
+    color: var(--primary)
+}
+
+.eyebrow {
+    color: var(--primary);
+    font-size: .7rem;
+    font-weight: 900;
+    margin: .7rem 0 .2rem
+}
+
+.reserve-wrap h1 {
+    font-size: 1.55rem;
+    margin: 0
+}
+
+.lead {
+    color: var(--muted);
+    font-size: .78rem;
+    line-height: 1.8;
+    max-width: 350px;
+    margin: .6rem auto 1rem
+}
+
+.reservation-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: var(--shadow-md);
+    padding: 1rem;
+    position: relative;
+    overflow: hidden
+}
+
+.timer {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 2
+}
+
+.timer-ring {
+    --progress: 300deg;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: conic-gradient(var(--primary) var(--progress), var(--line) 0);
+    position: relative
+}
+
+.timer-ring:before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    background: white;
+    border-radius: 50%
+}
+
+.timer-ring span {
+    position: relative;
+    display: flex;
+    flex-direction: column
+}
+
+.timer-ring strong {
+    font-size: 1.05rem;
+    direction: ltr
+}
+
+.timer-ring small {
+    font-size: .48rem;
+    color: var(--muted)
+}
+
+.bike-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--line);
+    padding-top: .85rem
+}
+
+.bike-details>span {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem
+}
+
+.bike-details>span+span {
+    border-right: 1px solid var(--line)
+}
+
+.bike-details small {
+    color: var(--muted);
+    font-size: .6rem
+}
+
+.bike-details strong {
+    font-size: .78rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .2rem
+}
+
+.bike-details lucide-icon {
+    width: 13px;
+    color: var(--primary)
+}
+
+.big {
+    height: 58px;
+    margin-top: 1rem
+}
+
+.report-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .35rem;
+    color: #b06722;
+    font-size: .72rem;
+    font-weight: 800;
+    margin: 1rem
+}
+
+.report-link lucide-icon {
+    width: 16px
+}
+
+.notice {
+    display: flex;
+    align-items: center;
+    text-align: right;
+    gap: .75rem;
+    background: var(--primary-soft);
+    color: var(--primary-dark);
+    padding: .8rem;
+    border-radius: 14px
+}
+
+.notice>lucide-icon {
+    width: 25px
+}
+
+.notice p {
+    margin: 0;
+    font-size: .65rem;
+    line-height: 1.7
+}

@@ -1,0 +1,203 @@
+:host {
+    display: block;
+    background: #071207;
+    color: #fff;
+    min-height: 100dvh
+}
+
+.scanner {
+    min-height: 100dvh;
+    max-width: 520px;
+    margin: auto;
+    display: flex;
+    flex-direction: column
+}
+
+.scanner header {
+    height: 68px;
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem
+}
+
+.scanner header a {
+    color: #fff
+}
+
+.camera {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    position: relative
+}
+
+.camera:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(40, 120, 22, .15), transparent 55%)
+}
+
+.scan-copy {
+    text-align: center;
+    position: relative
+}
+
+.qr-icon {
+    display: grid;
+    place-items: center;
+    width: 43px;
+    height: 43px;
+    margin: auto;
+    border-radius: 13px;
+    background: rgba(124, 188, 109, .13);
+    color: #9dcd92
+}
+
+.scan-copy h1 {
+    font-size: 1.3rem;
+    margin: .7rem 0 .3rem
+}
+
+.scan-copy p {
+    font-size: .75rem;
+    color: #aab3a7
+}
+
+.scan-area {
+    position: relative;
+    width: min(72vw, 310px);
+    aspect-ratio: 1;
+    margin: 1.5rem;
+    background: rgba(255, 255, 255, .035);
+    border-radius: 28px
+}
+
+.c {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border-color: #7cbc6d;
+    border-style: solid
+}
+
+.c1 {
+    top: 0;
+    right: 0;
+    border-width: 4px 4px 0 0;
+    border-radius: 0 18px 0 0
+}
+
+.c2 {
+    top: 0;
+    left: 0;
+    border-width: 4px 0 0 4px;
+    border-radius: 18px 0 0
+}
+
+.c3 {
+    bottom: 0;
+    right: 0;
+    border-width: 0 4px 4px 0;
+    border-radius: 0 0 18px
+}
+
+.c4 {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 4px 4px;
+    border-radius: 0 0 0 18px
+}
+
+.laser {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 48%;
+    height: 2px;
+    background: #7cbc6d;
+    box-shadow: 0 0 18px #7cbc6d;
+    animation: scan 2.3s ease-in-out infinite
+}
+
+.fake-qr {
+    position: absolute;
+    inset: 26%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    opacity: .3
+}
+
+.fake-qr b {
+    border: 5px solid #fff
+}
+
+.fake-qr b:nth-child(4) {
+    grid-column: 2
+}
+
+.camera-actions {
+    display: flex;
+    gap: 1rem;
+    position: relative
+}
+
+.camera-actions button {
+    width: 68px;
+    height: 68px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .08);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .2rem;
+    font-size: .6rem
+}
+
+.scanner-footer {
+    background: #fff;
+    color: var(--ink);
+    padding: 1rem 1.2rem calc(1rem + env(safe-area-inset-bottom));
+    border-radius: 24px 24px 0 0
+}
+
+.scanner-footer>div {
+    display: flex;
+    gap: .7rem;
+    align-items: center;
+    margin-bottom: .7rem
+}
+
+.scanner-footer>div>lucide-icon {
+    color: var(--primary)
+}
+
+.scanner-footer p {
+    font-size: .65rem;
+    line-height: 1.6;
+    margin: 0
+}
+
+.scanner-footer .btn {
+    margin: 0
+}
+
+@keyframes scan {
+
+    0%,
+    100% {
+        top: 15%
+    }
+
+    50% {
+        top: 85%
+    }
+}

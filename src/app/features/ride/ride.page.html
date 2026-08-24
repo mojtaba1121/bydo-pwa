@@ -1,0 +1,31 @@
+<main class="app-shell ride-page">
+    <section class="ride-map">
+        <div class="route"></div>
+        <span class="rider"><lucide-icon name="bike" /></span
+        ><span class="destination"><lucide-icon name="flag" /></span
+        ><button class="locate"><lucide-icon name="locate-fixed" /></button>
+        <header>
+            <span class="live"><i></i> سفر فعال</span><button><lucide-icon name="siren" /> کمک اضطراری</button>
+        </header>
+    </section>
+    <section class="ride-sheet">
+        <div class="sheet-handle"></div>
+        <div class="ride-time"><small>مدت سفر</small><strong>{{ time() }}</strong><span>دوچرخه BD-2048</span></div>
+        <div class="stats">
+            <span
+                ><small>مسافت</small><strong>۲٫۴ <i>km</i></strong></span
+            ><span
+                ><small>سرعت فعلی</small><strong>۱۴ <i>km/h</i></strong></span
+            ><span
+                ><small>هزینه تا این لحظه</small><strong>۱۸٬۵۰۰ <i>تومان</i></strong></span
+            >
+        </div>
+        <div class="ride-note">
+            <lucide-icon name="shield" />
+            <p>برای پایان سفر، دوچرخه را در یکی از ایستگاه‌های بایدو قفل کن.</p>
+        </div>
+        <button class="end-ride" (click)="finish()">
+            <span><lucide-icon name="lock-keyhole" /></span><b>پایان سفر</b><small>قفل را در ایستگاه ببند</small>
+        </button>
+    </section>
+</main>

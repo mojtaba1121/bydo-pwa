@@ -1,0 +1,19 @@
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    color: var(--ink);
+    font-size: 1.35rem;
+    font-weight: 900
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 14px;
+    background: var(--primary);
+    color: #fff;
+    box-shadow: var(--shadow-green)
+}

@@ -1,0 +1,21 @@
+.scan-fab {
+    position: fixed;
+    z-index: 32;
+    left: 50%;
+    bottom: 88px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    padding: .85rem 1.15rem;
+    border-radius: 999px;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 800;
+    box-shadow: 0 12px 32px rgba(0, 18, 0, .28);
+    white-space: nowrap
+}
+
+.scan-fab:hover {
+    background: var(--primary-dark)
+}

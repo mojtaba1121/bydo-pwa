@@ -1,0 +1,81 @@
+<main class="app-shell page-bg simple">
+    <header><bydo-brand /></header>
+    @switch(type){@case('wallet'){
+    <section class="balance">
+        <small>موجودی کیف پول</small><strong>۱۲۵٬۰۰۰ <i>تومان</i></strong
+        ><button class="btn light"><lucide-icon name="plus" /> افزایش موجودی</button>
+    </section>
+    <section class="simple-content">
+        <h1>تراکنش‌های اخیر</h1>
+        <div class="list">
+            <article>
+                <span class="list-icon"><lucide-icon name="bike" /></span>
+                <div><strong>سفر پارک ملت</strong><small>امروز، ۱۸:۴۲</small></div>
+                <b class="minus">−۱۸٬۵۰۰</b>
+            </article>
+            <article>
+                <span class="list-icon green"><lucide-icon name="credit-card" /></span>
+                <div><strong>افزایش موجودی</strong><small>۲۲ مرداد، ۱۰:۱۵</small></div>
+                <b class="plus">+۱۰۰٬۰۰۰</b>
+            </article>
+            <article>
+                <span class="list-icon"><lucide-icon name="bike" /></span>
+                <div><strong>سفر بلوار کشاورز</strong><small>۲۰ مرداد، ۱۷:۰۳</small></div>
+                <b class="minus">−۲۶٬۰۰۰</b>
+            </article>
+        </div>
+    </section>
+    }@case('profile'){
+    <section class="profile-head">
+        <div class="avatar"><lucide-icon name="user-round" /></div>
+        <h1>کاربر بایدو</h1>
+        <p>شماره تأییدشده</p>
+        <span><lucide-icon name="shield-check" /> حساب تأیید شده</span>
+    </section>
+    <section class="simple-content">
+        <div class="list menu">
+            <article>
+                <span class="list-icon green"><lucide-icon name="settings" /></span><strong>تنظیمات حساب</strong
+                ><lucide-icon name="chevron-left" />
+            </article>
+            <article>
+                <span class="list-icon green"><lucide-icon name="gift" /></span><strong>دعوت از دوستان</strong
+                ><lucide-icon name="chevron-left" />
+            </article>
+            <article>
+                <span class="list-icon green"><lucide-icon name="headphones" /></span><strong>پشتیبانی</strong
+                ><lucide-icon name="chevron-left" />
+            </article>
+            <article>
+                <span class="list-icon green"><lucide-icon name="help-circle" /></span><strong>راهنمای استفاده</strong
+                ><lucide-icon name="chevron-left" />
+            </article>
+        </div>
+    </section>
+    }@default{
+    <section class="trips-head">
+        <p class="eyebrow">مسیرهای طی‌شده</p>
+        <h1>سفرهای من</h1>
+        <div class="trip-summary">
+            <span><strong>۱۲</strong><small>سفر</small></span
+            ><span><strong>۳۸٫۶</strong><small>کیلومتر</small></span
+            ><span><strong>۲:۴۵</strong><small>ساعت رکاب‌زنی</small></span>
+        </div>
+    </section>
+    <section class="simple-content">
+        <h2>سفرهای اخیر</h2>
+        <div class="list trips">
+            <article>
+                <span class="list-icon green"><lucide-icon name="bike" /></span>
+                <div><strong>پارک ملت ← میدان ولیعصر</strong><small>امروز · ۲۴ دقیقه · ۴٫۲ کیلومتر</small></div>
+                <b>۱۸٬۵۰۰</b>
+            </article>
+            <article>
+                <span class="list-icon green"><lucide-icon name="bike" /></span>
+                <div><strong>بلوار کشاورز ← پارک لاله</strong><small>۲۰ مرداد · ۳۱ دقیقه · ۵٫۸ کیلومتر</small></div>
+                <b>۲۶٬۰۰۰</b>
+            </article>
+        </div>
+    </section>
+    }}<bydo-bottom-nav />
+</main>

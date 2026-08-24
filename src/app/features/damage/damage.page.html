@@ -1,0 +1,43 @@
+<main class="app-shell page-bg">
+    <header class="detail-top">
+        <a [routerLink]="['/reservation',bikeId]" class="icon-btn"><lucide-icon name="arrow-right" /></a
+        ><strong>گزارش خرابی</strong><span></span>
+    </header>
+    <section class="damage-wrap">
+        <p class="eyebrow">بررسی قبل از سفر</p>
+        <h1>کجای دوچرخه مشکل داره؟</h1>
+        <p class="muted">برای انتخاب، روی قسمت موردنظر دوچرخه یا یکی از گزینه‌ها بزن.</p>
+        <div class="bike-inspector">
+            <bydo-bike-visual [size]="150" /><button
+                class="hotspot wheel"
+                [class.active]="selected()==='چرخ و لاستیک'"
+                (click)="selected.set('چرخ و لاستیک')"
+            >
+                ۱</button
+            ><button class="hotspot seat" [class.active]="selected()==='زین'" (click)="selected.set('زین')">۲</button
+            ><button
+                class="hotspot handle"
+                [class.active]="selected()==='فرمان و ترمز'"
+                (click)="selected.set('فرمان و ترمز')"
+            >
+                ۳
+            </button>
+        </div>
+        <div class="damage-grid">
+            <button (click)="selected.set('چرخ و لاستیک')" [class.active]="selected()==='چرخ و لاستیک'">
+                <lucide-icon name="circle-dot" /><span>چرخ و لاستیک</span></button
+            ><button (click)="selected.set('فرمان و ترمز')" [class.active]="selected()==='فرمان و ترمز'">
+                <lucide-icon name="octagon-alert" /><span>فرمان و ترمز</span></button
+            ><button (click)="selected.set('قفل دوچرخه')" [class.active]="selected()==='قفل دوچرخه'">
+                <lucide-icon name="lock" /><span>قفل دوچرخه</span></button
+            ><button (click)="selected.set('چراغ')" [class.active]="selected()==='چراغ'">
+                <lucide-icon name="lightbulb" /><span>چراغ</span>
+            </button>
+        </div>
+        <label for="damageDescription">توضیحات بیشتر (اختیاری)</label
+        ><textarea id="damageDescription" rows="3" placeholder="مشکل را کوتاه توضیح بده..."></textarea
+        ><button class="btn primary wide" [disabled]="!selected()" (click)="submit()">
+            <lucide-icon name="check-circle-2" /> ثبت گزارش و انتخاب دوچرخه دیگر
+        </button>
+    </section>
+</main>

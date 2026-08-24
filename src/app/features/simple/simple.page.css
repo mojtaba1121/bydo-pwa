@@ -1,0 +1,225 @@
+.simple {
+    min-height: 100dvh;
+    padding-bottom: 85px
+}
+
+.simple>header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 1.2rem;
+    background: #fff;
+    border-bottom: 1px solid var(--line)
+}
+
+.balance {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: #fff;
+    padding: 2rem 1.3rem;
+    text-align: center
+}
+
+.balance small {
+    display: block;
+    opacity: .75
+}
+
+.balance strong {
+    display: block;
+    font-size: 2.1rem;
+    margin: .4rem
+}
+
+.balance strong i {
+    font-size: .65rem;
+    font-style: normal
+}
+
+.balance .light {
+    background: #fff;
+    color: var(--primary);
+    margin: auto
+}
+
+.simple-content {
+    padding: 1.2rem
+}
+
+.simple-content h1,
+.simple-content h2 {
+    font-size: 1.1rem
+}
+
+.list {
+    display: grid;
+    gap: .65rem
+}
+
+.list article {
+    min-height: 68px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: .7rem;
+    display: flex;
+    align-items: center;
+    gap: .7rem
+}
+
+.list-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #f5f5f5;
+    color: var(--muted)
+}
+
+.list-icon.green {
+    background: var(--primary-soft);
+    color: var(--primary)
+}
+
+.list article>div {
+    display: flex;
+    flex-direction: column;
+    flex: 1
+}
+
+.list strong {
+    font-size: .75rem
+}
+
+.list small {
+    font-size: .6rem;
+    color: var(--muted);
+    margin-top: .2rem
+}
+
+.list b {
+    font-size: .7rem
+}
+
+.list b.minus {
+    color: #b33e3e
+}
+
+.list b.plus {
+    color: var(--primary)
+}
+
+.profile-head {
+    text-align: center;
+    padding: 1.5rem;
+    background: #fff
+}
+
+.avatar {
+    width: 76px;
+    height: 76px;
+    display: grid;
+    place-items: center;
+    margin: auto;
+    border-radius: 24px;
+    background: var(--primary-soft);
+    color: var(--primary)
+}
+
+.avatar lucide-icon {
+    width: 38px;
+    height: 38px
+}
+
+.profile-head h1 {
+    font-size: 1.2rem;
+    margin: .7rem 0 .2rem
+}
+
+.profile-head p {
+    font-size: .7rem;
+    color: var(--muted);
+    margin: 0
+}
+
+.profile-head span {
+    display: inline-flex;
+    align-items: center;
+    gap: .2rem;
+    color: var(--primary);
+    background: var(--primary-soft);
+    padding: .3rem .55rem;
+    border-radius: 8px;
+    font-size: .58rem;
+    font-weight: 800;
+    margin-top: .6rem
+}
+
+.profile-head span lucide-icon {
+    width: 12px
+}
+
+.menu article>strong {
+    flex: 1
+}
+
+.menu article>lucide-icon {
+    width: 18px;
+    color: var(--muted)
+}
+
+.trips-head {
+    padding: 1.5rem 1.2rem;
+    background: #fff
+}
+
+.eyebrow {
+    margin: 0;
+    color: var(--primary);
+    font-size: .68rem;
+    font-weight: 900
+}
+
+.trips-head h1 {
+    margin: .2rem 0 1rem
+}
+
+.trip-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: var(--primary-soft);
+    border-radius: 16px;
+    padding: .9rem
+}
+
+.trip-summary span {
+    display: flex;
+    flex-direction: column;
+    text-align: center
+}
+
+.trip-summary span+span {
+    border-right: 1px solid #bdddb6
+}
+
+.trip-summary strong {
+    color: var(--primary-dark)
+}
+
+.trip-summary small {
+    font-size: .55rem;
+    color: var(--muted)
+}
+
+@media(min-width:700px) {
+
+    .simple-content,
+    .trips-head {
+        max-width: 700px;
+        margin: auto
+    }
+
+    .balance {
+        border-radius: 0 0 28px 28px
+    }
+}

@@ -1,8 +1,40 @@
-import { Component, OnDestroy, signal } from '@angular/core';
+import { Component, OnDestroy, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
-import { BikeVisualComponent } from '../../shared/ui';
 import { FaNumberPipe } from '../../shared/fa-number.pipe';
+import { BikeVisualComponent } from '../../shared/ui';
 
-@Component({standalone:true,imports:[RouterLink, BikeVisualComponent, FaNumberPipe, LucideAngularModule],template:`<main class="app-shell page-bg"><header class="detail-top"><a routerLink="/map" class="icon-btn"><lucide-icon name="arrow-right"/></a><strong>رزرو دوچرخه</strong><span></span></header><section class="reserve-wrap"><div class="success-mark"><lucide-icon name="check-circle-2"/></div><p class="eyebrow">با موفقیت رزرو شد</p><h1>دوچرخه منتظر شماست</h1><p class="lead">تا پایان زمان رزرو خودت را به ایستگاه برسون و قفل دوچرخه رو باز کن.</p><article class="reservation-card"><div class="timer"><div class="timer-ring" [style.--progress]="progress()+'deg'"><span><strong>{{ minutes() | faNumber }}:{{ seconds() | faNumber }}</strong><small>زمان باقی‌مانده</small></span></div></div><bydo-bike-visual [size]="105"/><div class="bike-details"><span><small>کد دوچرخه</small><strong>{{ bikeId }}</strong></span><span><small>محل دریافت</small><strong><lucide-icon name="map-pin"/> پارک ملت</strong></span></div></article><a class="btn primary wide big" routerLink="/scan"><lucide-icon name="qr-code"/> اسکن کد و باز کردن قفل</a><a class="report-link" [routerLink]="['/damage',bikeId]"><lucide-icon name="wrench"/> دوچرخه مشکلی دارد؟ گزارش خرابی</a><div class="notice"><lucide-icon name="shield-check"/><p><strong>رزرو رایگان است</strong><br>هزینه سفر فقط بعد از باز شدن قفل محاسبه می‌شود.</p></div></section></main>`,styles:[`.detail-top{height:64px;display:grid;grid-template-columns:44px 1fr 44px;align-items:center;text-align:center;padding:0 1rem;background:#fff;border-bottom:1px solid var(--line)}.reserve-wrap{max-width:500px;margin:auto;text-align:center;padding:1.3rem}.success-mark{width:48px;height:48px;margin:auto;display:grid;place-items:center;border-radius:50%;background:var(--primary-soft);color:var(--primary)}.eyebrow{color:var(--primary);font-size:.7rem;font-weight:900;margin:.7rem 0 .2rem}.reserve-wrap h1{font-size:1.55rem;margin:0}.lead{color:var(--muted);font-size:.78rem;line-height:1.8;max-width:350px;margin:.6rem auto 1rem}.reservation-card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-md);padding:1rem;position:relative;overflow:hidden}.timer{position:absolute;right:1rem;top:1rem;z-index:2}.timer-ring{--progress:300deg;width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--primary) var(--progress),var(--line) 0);position:relative}.timer-ring:before{content:'';position:absolute;inset:5px;background:white;border-radius:50%}.timer-ring span{position:relative;display:flex;flex-direction:column}.timer-ring strong{font-size:1.05rem;direction:ltr}.timer-ring small{font-size:.48rem;color:var(--muted)}.bike-details{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);padding-top:.85rem}.bike-details>span{display:flex;flex-direction:column;gap:.25rem}.bike-details>span+span{border-right:1px solid var(--line)}.bike-details small{color:var(--muted);font-size:.6rem}.bike-details strong{font-size:.78rem;display:flex;justify-content:center;align-items:center;gap:.2rem}.bike-details lucide-icon{width:13px;color:var(--primary)}.big{height:58px;margin-top:1rem}.report-link{display:flex;justify-content:center;align-items:center;gap:.35rem;color:#b06722;font-size:.72rem;font-weight:800;margin:1rem}.report-link lucide-icon{width:16px}.notice{display:flex;align-items:center;text-align:right;gap:.75rem;background:var(--primary-soft);color:var(--primary-dark);padding:.8rem;border-radius:14px}.notice>lucide-icon{width:25px}.notice p{margin:0;font-size:.65rem;line-height:1.7}`]})
-export class ReservationPage implements OnDestroy { bikeId='BD-2048'; remaining=signal(598); timer:number; constructor(route:ActivatedRoute){this.bikeId=route.snapshot.paramMap.get('bikeId')??this.bikeId;this.timer=window.setInterval(()=>this.remaining.update(v=>Math.max(0,v-1)),1000)} minutes(){return Math.floor(this.remaining()/60).toString().padStart(2,'0')} seconds(){return (this.remaining()%60).toString().padStart(2,'0')} progress(){return (this.remaining()/600)*360} ngOnDestroy(){clearInterval(this.timer)} }
+@Component({
+  standalone: true,
+  imports: [RouterLink, BikeVisualComponent, FaNumberPipe, LucideAngularModule],
+  templateUrl: './reservation.page.html',
+  styleUrl: './reservation.page.css'
+})
+export class ReservationPage implements OnDestroy {
+  private readonly route = inject(ActivatedRoute);
+
+  bikeId = 'BD-2048';
+  remaining = signal(598);
+  timer: number;
+
+  constructor() {
+    this.bikeId = this.route.snapshot.paramMap.get('bikeId') ?? this.bikeId;
+    this.timer = window.setInterval(() => this.remaining.update((value) => Math.max(0, value - 1)), 1000);
+  }
+
+  minutes() {
+    return Math.floor(this.remaining() / 60).toString().padStart(2, '0');
+  }
+
+  seconds() {
+    return (this.remaining() % 60).toString().padStart(2, '0');
+  }
+
+  progress() {
+    return (this.remaining() / 600) * 360;
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.timer);
+  }
+}

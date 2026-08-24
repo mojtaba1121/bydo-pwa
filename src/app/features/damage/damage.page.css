@@ -1,0 +1,135 @@
+.detail-top {
+    height: 64px;
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+    background: #fff;
+    border-bottom: 1px solid var(--line)
+}
+
+.damage-wrap {
+    max-width: 540px;
+    margin: auto;
+    padding: 1.2rem
+}
+
+.eyebrow {
+    color: #b06722;
+    font-size: .68rem;
+    font-weight: 900;
+    margin: 0
+}
+
+.damage-wrap h1 {
+    font-size: 1.5rem;
+    margin: .25rem 0
+}
+
+.muted {
+    font-size: .72rem;
+    line-height: 1.8;
+    margin: .3rem 0
+}
+
+.bike-inspector {
+    height: 195px;
+    position: relative;
+    background: linear-gradient(180deg, #fff, var(--primary-soft));
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    margin: 1rem 0;
+    overflow: hidden
+}
+
+.bike-inspector ::ng-deep .bike-visual {
+    height: 195px
+}
+
+.hotspot {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    font-weight: 900;
+    box-shadow: var(--shadow-sm)
+}
+
+.hotspot.active {
+    background: #b06722;
+    color: #fff;
+    border-color: #fff
+}
+
+.wheel {
+    left: 25%;
+    bottom: 31px
+}
+
+.seat {
+    left: 48%;
+    top: 42px
+}
+
+.handle {
+    right: 25%;
+    top: 55px
+}
+
+.damage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .65rem
+}
+
+.damage-grid button {
+    height: 68px;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .8rem;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    color: var(--muted);
+    font-weight: 700
+}
+
+.damage-grid button.active {
+    border-color: #b06722;
+    background: #fff8ef;
+    color: #8c5018
+}
+
+.damage-grid lucide-icon {
+    width: 21px
+}
+
+.damage-wrap label {
+    display: block;
+    font-size: .72rem;
+    font-weight: 800;
+    margin: 1rem 0 .4rem
+}
+
+.damage-wrap textarea {
+    width: 100%;
+    resize: none;
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    padding: .8rem;
+    font: inherit;
+    outline: 0
+}
+
+.damage-wrap textarea:focus {
+    border-color: var(--primary)
+}
+
+.damage-wrap .btn {
+    margin-top: .8rem
+}

@@ -1,0 +1,20 @@
+.bike-visual {
+    height: 150px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    color: var(--primary)
+}
+
+.halo {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--primary-soft), transparent 70%)
+}
+
+lucide-icon {
+    position: relative;
+    filter: drop-shadow(0 14px 15px rgba(40, 120, 22, .17))
+}

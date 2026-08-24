@@ -1,0 +1,45 @@
+<main class="auth-shell">
+    <section class="auth-hero">
+        <div class="hero-top">
+            <bydo-brand /><button class="language"><lucide-icon name="languages" /> فارسی</button>
+        </div>
+        <div class="hero-copy">
+            <span class="mini-badge"><i></i> شهر برای حرکت آماده‌ست</span>
+            <h1>شهر را<br /><em>با ریتم خودت</em><br />کشف کن.</h1>
+            <p>نزدیک‌ترین دوچرخه را پیدا کن، قفلش را باز کن و سفرت را شروع کن.</p>
+        </div>
+        <div class="road">
+            <span class="road-line"></span><span class="bike-orbit"><lucide-icon name="bike" [size]="74" /></span>
+        </div>
+        <div class="trust-row">
+            <span><lucide-icon name="check" /> بدون ترافیک</span><span><lucide-icon name="check" /> دوستدار شهر</span
+            ><span><lucide-icon name="check" /> همیشه نزدیک</span>
+        </div>
+    </section>
+    <section class="auth-panel">
+        <div class="auth-card">
+            <p class="eyebrow">خوش اومدی</p>
+            <h2>ورود به بایدو</h2>
+            <p class="muted">شماره موبایلت را وارد کن تا کد تأیید برات ارسال بشه.</p>
+            <label for="mobile">شماره موبایل</label>
+            <div class="phone-field" [class.valid]="mobile.length === 11">
+                <span>+۹۸</span
+                ><input
+                    id="mobile"
+                    inputmode="numeric"
+                    maxlength="11"
+                    [(ngModel)]="mobile"
+                    placeholder="شماره تأییدشده"
+                /><lucide-icon name="smartphone" />
+            </div>
+            <button class="btn primary wide" [disabled]="mobile.length !== 11" (click)="continue()">
+                دریافت کد تأیید <lucide-icon name="chevron-left" />
+            </button>
+            <div class="divider"><span>یا</span></div>
+            <button class="btn secondary wide" (click)="continue()">
+                <lucide-icon name="shield-check" /> ورود یکپارچه سازمانی
+            </button>
+            <p class="terms">با ورود، <a href="#">قوانین استفاده</a> و <a href="#">حریم خصوصی</a> را می‌پذیرم.</p>
+        </div>
+    </section>
+</main>
