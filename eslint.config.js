@@ -28,7 +28,8 @@ module.exports = tseslint.config(
           prefix: 'bydo',
           style: 'camelCase'
         }
-      ]
+      ],
+      '@angular-eslint/prefer-on-push-component-change-detection': 'off'
     }
   },
   {

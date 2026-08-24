@@ -1,13 +1,14 @@
-import { Component, OnDestroy, inject, signal } from '@angular/core';
+import { Component, OnDestroy, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { LucideAngularModule } from 'lucide-angular';
+import { LucideIconComponent } from '../../shared/lucide-icon.component';
 import { TranslatePipe } from '../../core/i18n.service';
 import { FaNumberPipe } from '../../shared/fa-number.pipe';
 
 @Component({
   standalone: true,
-  imports: [LucideAngularModule, FaNumberPipe, TranslatePipe],
+  imports: [LucideIconComponent, FaNumberPipe, TranslatePipe],
   templateUrl: './ride.page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './ride.page.css'
 })
 export class RidePage implements OnDestroy {

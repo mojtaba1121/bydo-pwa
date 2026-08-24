@@ -1,12 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { LucideAngularModule } from 'lucide-angular';
+import { LucideIconComponent } from '../../shared/lucide-icon.component';
 import { TranslatePipe } from '../../core/i18n.service';
 
 @Component({
   standalone: true,
-  imports: [RouterLink, LucideAngularModule, TranslatePipe],
+  imports: [RouterLink, LucideIconComponent, TranslatePipe],
   templateUrl: './scan.page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './scan.page.css'
 })
 export class ScanPage {

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LanguageService, ThemeService } from './core/preferences.service';
 
@@ -6,6 +6,7 @@ import { LanguageService, ThemeService } from './core/preferences.service';
   selector: 'bydo-root',
   standalone: true,
   imports: [RouterOutlet],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './app.component.html'
 })
 export class AppComponent {

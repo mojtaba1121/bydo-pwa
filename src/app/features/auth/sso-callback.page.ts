@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
-import { LucideAngularModule } from 'lucide-angular';
+import { LucideIconComponent } from '../../shared/lucide-icon.component';
 import { AuthSessionService } from '../../core/auth-session.service';
 import { I18nService, TranslatePipe } from '../../core/i18n.service';
 import { SubscriberAuthService } from '../../core/subscriber-auth.service';
@@ -10,8 +10,9 @@ import { toAuthErrorMessage } from './auth-error';
 
 @Component({
   standalone: true,
-  imports: [BrandComponent, LucideAngularModule, TranslatePipe],
+  imports: [BrandComponent, LucideIconComponent, TranslatePipe],
   templateUrl: './sso-callback.page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './sso-callback.page.css'
 })
 export class SsoCallbackPage {

@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
-import { LucideAngularModule } from 'lucide-angular';
+import { LucideIconComponent } from '../../shared/lucide-icon.component';
 import { AuthSessionService } from '../../core/auth-session.service';
 import { I18nService, TranslatePipe } from '../../core/i18n.service';
 import { LanguageService, ThemeService } from '../../core/preferences.service';
@@ -12,8 +12,9 @@ import { toAuthErrorMessage } from './auth-error';
 
 @Component({
   standalone: true,
-  imports: [FormsModule, BrandComponent, LucideAngularModule, TranslatePipe],
+  imports: [FormsModule, BrandComponent, LucideIconComponent, TranslatePipe],
   templateUrl: './login.page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './login.page.css'
 })
 export class LoginPage {

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LucideAngularModule } from 'lucide-angular';
+import { LucideIconComponent } from '../../shared/lucide-icon.component';
 import { TranslatePipe } from '../../core/i18n.service';
 import { STATIONS } from '../../core/models';
 import { FaNumberPipe } from '../../shared/fa-number.pipe';
@@ -8,8 +8,9 @@ import { BottomNavComponent, BrandComponent, ScanButtonComponent } from '../../s
 
 @Component({
   standalone: true,
-  imports: [RouterLink, BrandComponent, BottomNavComponent, ScanButtonComponent, FaNumberPipe, LucideAngularModule, TranslatePipe],
+  imports: [RouterLink, BrandComponent, BottomNavComponent, ScanButtonComponent, FaNumberPipe, LucideIconComponent, TranslatePipe],
   templateUrl: './map.page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './map.page.css'
 })
 export class MapPage {

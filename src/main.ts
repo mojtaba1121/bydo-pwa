@@ -1,19 +1,63 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideServiceWorker } from '@angular/service-worker';
-import { provideHttpClient } from '@angular/common/http';
-import { importProvidersFrom, isDevMode } from '@angular/core';
-import { ArrowRight, BatteryCharging, Bell, Bike, Check, CheckCircle2, ChevronLeft, CircleDot, CircleUserRound, Clock3, CreditCard, Flag, Flashlight, Gift, Globe2, Headphones, HelpCircle, Image, Keyboard, Languages, Lightbulb, LocateFixed, Lock, LockKeyhole, Map, MapPin, Minus, Moon, Navigation, OctagonAlert, Plus, QrCode, Search, Settings, Shield, ShieldCheck, Siren, SlidersHorizontal, Smartphone, Sun, UserRound, WalletCards, Wrench, Zap, LucideAngularModule } from 'lucide-angular';
+import { provideHttpClient, withXhr } from '@angular/common/http';
+import { isDevMode, provideZoneChangeDetection } from '@angular/core';
+import { LucideArrowRight, LucideBatteryCharging, LucideBell, LucideBike, LucideCheck, LucideCheckCircle2, LucideChevronLeft, LucideCircleDot, LucideCircleUserRound, LucideClock3, LucideCreditCard, LucideFlag, LucideFlashlight, LucideGift, LucideGlobe2, LucideHeadphones, LucideHelpCircle, LucideImage, LucideKeyboard, LucideLanguages, LucideLightbulb, LucideLocateFixed, LucideLock, LucideLockKeyhole, LucideMap, LucideMapPin, LucideMinus, LucideMoon, LucideNavigation, LucideOctagonAlert, LucidePlus, LucideQrCode, LucideSearch, LucideSettings, LucideShield, LucideShieldCheck, LucideSiren, LucideSlidersHorizontal, LucideSmartphone, LucideSun, LucideUserRound, LucideWalletCards, LucideWrench, LucideZap, provideLucideIcons } from '@lucide/angular';
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideZoneChangeDetection(),
     provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(),
-    provideAnimations(),
-    importProvidersFrom(LucideAngularModule.pick({ ArrowRight, BatteryCharging, Bell, Bike, Check, CheckCircle2, ChevronLeft, CircleDot, CircleUserRound, Clock3, CreditCard, Flag, Flashlight, Gift, Globe2, Headphones, HelpCircle, Image, Keyboard, Languages, Lightbulb, LocateFixed, Lock, LockKeyhole, Map, MapPin, Minus, Moon, Navigation, OctagonAlert, Plus, QrCode, Search, Settings, Shield, ShieldCheck, Siren, SlidersHorizontal, Smartphone, Sun, UserRound, WalletCards, Wrench, Zap })),
+    provideHttpClient(withXhr()),
+    provideLucideIcons(
+      LucideArrowRight,
+      LucideBatteryCharging,
+      LucideBell,
+      LucideBike,
+      LucideCheck,
+      LucideCheckCircle2,
+      LucideChevronLeft,
+      LucideCircleDot,
+      LucideCircleUserRound,
+      LucideClock3,
+      LucideCreditCard,
+      LucideFlag,
+      LucideFlashlight,
+      LucideGift,
+      LucideGlobe2,
+      LucideHeadphones,
+      LucideHelpCircle,
+      LucideImage,
+      LucideKeyboard,
+      LucideLanguages,
+      LucideLightbulb,
+      LucideLocateFixed,
+      LucideLock,
+      LucideLockKeyhole,
+      LucideMap,
+      LucideMapPin,
+      LucideMinus,
+      LucideMoon,
+      LucideNavigation,
+      LucideOctagonAlert,
+      LucidePlus,
+      LucideQrCode,
+      LucideSearch,
+      LucideSettings,
+      LucideShield,
+      LucideShieldCheck,
+      LucideSiren,
+      LucideSlidersHorizontal,
+      LucideSmartphone,
+      LucideSun,
+      LucideUserRound,
+      LucideWalletCards,
+      LucideWrench,
+      LucideZap
+    ),
     provideServiceWorker('ngsw-worker.js', { enabled: !isDevMode(), registrationStrategy: 'registerWhenStable:30000' })
   ]
 }).catch(console.error);

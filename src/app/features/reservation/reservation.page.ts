@@ -1,14 +1,15 @@
-import { Component, OnDestroy, inject, signal } from '@angular/core';
+import { Component, OnDestroy, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { LucideAngularModule } from 'lucide-angular';
+import { LucideIconComponent } from '../../shared/lucide-icon.component';
 import { TranslatePipe } from '../../core/i18n.service';
 import { FaNumberPipe } from '../../shared/fa-number.pipe';
 import { BikeVisualComponent } from '../../shared/ui';
 
 @Component({
   standalone: true,
-  imports: [RouterLink, BikeVisualComponent, FaNumberPipe, LucideAngularModule, TranslatePipe],
+  imports: [RouterLink, BikeVisualComponent, FaNumberPipe, LucideIconComponent, TranslatePipe],
   templateUrl: './reservation.page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './reservation.page.css'
 })
 export class ReservationPage implements OnDestroy {
