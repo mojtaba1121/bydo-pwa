@@ -272,6 +272,30 @@ h2 {
   font-weight: 800;
 }
 
+.divider {
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  font-size: .75rem;
+  margin: 1.1rem 0 0;
+}
+
+.divider:before,
+.divider:after {
+  content: '';
+  height: 1px;
+  background: var(--line);
+  flex: 1;
+}
+
+.divider span {
+  padding: 0 1rem;
+}
+
+.sso-btn {
+  box-shadow: none;
+}
+
 .terms {
   text-align: center;
   font-size: .7rem;

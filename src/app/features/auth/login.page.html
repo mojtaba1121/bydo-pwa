@@ -80,6 +80,12 @@
         </button>
       }
 
+      <div class="divider"><span>یا</span></div>
+      <button class="btn secondary wide sso-btn" type="button" [disabled]="loading" (click)="startSso()">
+        <lucide-icon name="shield-check" />
+        ورود یکپارچه سازمانی
+      </button>
+
       <p class="terms">با ورود، <a href="#">قوانین استفاده</a> و <a href="#">حریم خصوصی</a> را می‌پذیرم.</p>
     </div>
   </section>

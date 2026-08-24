@@ -93,6 +93,31 @@ export class LoginPage {
       });
   }
 
+  startSso() {
+    if (this.loading) {
+      return;
+    }
+
+    const state = crypto.randomUUID();
+
+    this.errorMessage = '';
+    this.loading = true;
+    sessionStorage.setItem('bydo.sso.state', state);
+
+    this.auth
+      .startSso(state)
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe({
+        next: ({ redirectUrl }) => {
+          window.location.assign(redirectUrl);
+        },
+        error: (error: unknown) => {
+          sessionStorage.removeItem('bydo.sso.state');
+          this.errorMessage = toAuthErrorMessage(error);
+        }
+      });
+  }
+
   editMobile() {
     this.step = 'mobile';
     this.otpCode = '';

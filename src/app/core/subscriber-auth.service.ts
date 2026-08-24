@@ -4,10 +4,13 @@ import { map } from 'rxjs';
 import { environment } from '../../environments/environment';
 import {
   ApiResponse,
+  SsoStartResponse,
   SubscriberAuthResponse,
   SubscriberOtpRequest,
   SubscriberOtpRequestedResponse,
-  SubscriberOtpVerifyRequest
+  SubscriberOtpVerifyRequest,
+  SubscriberSsoCallbackRequest,
+  SubscriberSsoStartRequest
 } from './auth.models';
 
 @Injectable({ providedIn: 'root' })
@@ -35,6 +38,29 @@ export class SubscriberAuthService {
 
     return this.http
       .post<ApiResponse<SubscriberAuthResponse>>(`${this.baseUrl}/otp/verify`, body)
+      .pipe(map((response) => unwrapResponse(response)));
+  }
+
+  startSso(state: string) {
+    const body: SubscriberSsoStartRequest = {
+      brokerageCode: environment.defaultBrokerageCode,
+      state
+    };
+
+    return this.http
+      .post<ApiResponse<SsoStartResponse>>(`${this.baseUrl}/sso/start`, body)
+      .pipe(map((response) => unwrapResponse(response)));
+  }
+
+  completeSsoCallback(username: string, refreshToken: string, state: string) {
+    const body: SubscriberSsoCallbackRequest = {
+      username,
+      refreshToken,
+      state
+    };
+
+    return this.http
+      .post<ApiResponse<SubscriberAuthResponse>>(`${this.baseUrl}/sso/callback`, body)
       .pipe(map((response) => unwrapResponse(response)));
   }
 }

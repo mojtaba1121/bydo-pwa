@@ -29,8 +29,23 @@ export interface SubscriberOtpVerifyRequest {
   code: string;
 }
 
+export interface SubscriberSsoStartRequest {
+  brokerageCode: string;
+  state: string;
+}
+
+export interface SubscriberSsoCallbackRequest {
+  username: string;
+  refreshToken: string;
+  state: string;
+}
+
 export interface SubscriberOtpRequestedResponse {
   requested: boolean;
+}
+
+export interface SsoStartResponse {
+  redirectUrl: string;
 }
 
 export interface SubscriberAuthSubscriberResponse {
@@ -47,7 +62,7 @@ export interface SubscriberAuthBrokerageResponse {
   name: string;
 }
 
-export type SubscriberAuthMethod = 'OTP' | string;
+export type SubscriberAuthMethod = 'OTP' | 'SSO' | string;
 
 export interface SubscriberAuthResponse {
   accessToken: string;
