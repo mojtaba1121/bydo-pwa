@@ -29,6 +29,10 @@ export interface SubscriberOtpVerifyRequest {
   code: string;
 }
 
+export interface SubscriberShahrManLoginRequest {
+  token: string;
+}
+
 export interface SubscriberSsoStartRequest {
   brokerageCode: string;
   state: string;
@@ -62,7 +66,7 @@ export interface SubscriberAuthBrokerageResponse {
   name: string;
 }
 
-export type SubscriberAuthMethod = 'OTP' | 'SSO' | string;
+export type SubscriberAuthMethod = 'SHAHREMAN' | 'OTP' | 'SSO' | string;
 
 export interface SubscriberAuthResponse {
   accessToken: string;

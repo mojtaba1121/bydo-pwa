@@ -9,6 +9,7 @@ import {
   SubscriberOtpRequest,
   SubscriberOtpRequestedResponse,
   SubscriberOtpVerifyRequest,
+  SubscriberShahrManLoginRequest,
   SubscriberSsoCallbackRequest,
   SubscriberSsoStartRequest
 } from './auth.models';
@@ -38,6 +39,14 @@ export class SubscriberAuthService {
 
     return this.http
       .post<ApiResponse<SubscriberAuthResponse>>(`${this.baseUrl}/otp/verify`, body)
+      .pipe(map((response) => unwrapResponse(response)));
+  }
+
+  loginWithShahrMan(token: string) {
+    const body: SubscriberShahrManLoginRequest = { token };
+
+    return this.http
+      .post<ApiResponse<SubscriberAuthResponse>>(`${this.baseUrl}/shahreman`, body)
       .pipe(map((response) => unwrapResponse(response)));
   }
 

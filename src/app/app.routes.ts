@@ -1,5 +1,6 @@
 import {Routes} from "@angular/router";
 import {LoginPage} from "./features/auth/login.page";
+import {ShahrManCallbackPage} from "./features/auth/shahrman-callback.page";
 import {SsoCallbackPage} from "./features/auth/sso-callback.page";
 import {MapPage} from "./features/map/map.page";
 import {StationPage} from "./features/station/station.page";
@@ -12,6 +13,8 @@ import {SimplePage} from "./features/simple/simple.page";
 export const routes: Routes = [
     {path: "", pathMatch: "full", redirectTo: "login"},
     {path: "login", component: LoginPage, title: "ورود | بایدو"},
+    {path: "callback", component: ShahrManCallbackPage, title: "ورود شهر من | بایدو"},
+    {path: "auth/shahreman/callback", component: ShahrManCallbackPage, title: "ورود شهر من | بایدو"},
     {path: "auth/sso/callback", component: SsoCallbackPage, title: "ورود یکپارچه | بایدو"},
     {path: "map", component: MapPage, title: "نقشه ایستگاه‌ها | بایدو"},
     {path: "station/:id", component: StationPage, title: "انتخاب دوچرخه | بایدو"},

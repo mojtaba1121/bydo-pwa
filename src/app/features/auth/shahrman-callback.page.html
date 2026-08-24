@@ -1,0 +1,16 @@
+<main class="callback-shell">
+  <section class="callback-card">
+    <bydo-brand />
+
+    @if (loading) {
+      <span class="status-icon loading"><lucide-icon name="shield-check" /></span>
+      <h1>در حال بررسی ورود شهر من</h1>
+      <p class="muted">چند لحظه صبر کن تا احراز هویت کامل بشه.</p>
+    } @else {
+      <span class="status-icon error"><lucide-icon name="octagon-alert" /></span>
+      <h1>ورود انجام نشد</h1>
+      <p class="muted">{{ errorMessage }}</p>
+      <button class="btn primary wide" type="button" (click)="goLogin()">بازگشت به ورود</button>
+    }
+  </section>
+</main>
