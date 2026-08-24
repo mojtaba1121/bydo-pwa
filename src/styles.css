@@ -1,3 +1,161 @@
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
-:root{--primary:#287816;--primary-dark:#0f5f00;--primary-deep:#002c00;--primary-soft:#deeedb;--primary-mid:#7cbc6d;--ink:#001200;--text:#1a1a1a;--muted:#757575;--surface:#f7f9f5;--line:#e5e9e2;--line-strong:#cbd2c7;--danger:#b33e3e;--shadow-sm:0 3px 12px rgba(0,18,0,.07);--shadow-md:0 10px 30px rgba(0,18,0,.11);--shadow-lg:0 24px 70px rgba(0,18,0,.14);--shadow-green:0 8px 20px rgba(40,120,22,.24);font-family:'Vazirmatn',Tahoma,sans-serif;color:var(--text);background:var(--surface);font-synthesis:none}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--surface)}body{direction:rtl}button,input,textarea{font-family:inherit}button{border:0;cursor:pointer;background:none}a{text-decoration:none;color:inherit}.app-shell{max-width:520px;margin:auto;background:var(--surface);min-height:100dvh;box-shadow:0 0 40px rgba(0,0,0,.04)}.page-bg{background:var(--surface)}.icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#f7f9f5;color:var(--ink)}.btn{min-height:50px;border-radius:14px;padding:0 1rem;display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font-weight:800;transition:.2s}.btn lucide-icon{width:19px}.btn.primary{background:var(--primary);color:#fff;box-shadow:var(--shadow-green)}.btn.primary:hover{background:var(--primary-dark);transform:translateY(-1px)}.btn.secondary{background:#fff;color:var(--ink);border:1px solid var(--line-strong)}.btn.wide{width:100%}.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none;transform:none}.muted{color:var(--muted)}@keyframes pulse{0%,100%{transform:scale(.8);opacity:.9}50%{transform:scale(1.25);opacity:.2}}@media(min-width:600px){body{background:#edf0eb}.app-shell{border-inline:1px solid var(--line)}}
+
+:root {
+  --font-family-base: 'Vazirmatn', Tahoma, sans-serif;
+  --primary: #287816;
+  --primary-dark: #0f5f00;
+  --primary-deep: #002c00;
+  --primary-soft: #deeedb;
+  --primary-mid: #7cbc6d;
+  --ink: #001200;
+  --text: #1a1a1a;
+  --muted: #757575;
+  --surface: #f7f9f5;
+  --line: #e5e9e2;
+  --line-strong: #cbd2c7;
+  --danger: #b33e3e;
+  --shadow-sm: 0 3px 12px rgba(0, 18, 0, .07);
+  --shadow-md: 0 10px 30px rgba(0, 18, 0, .11);
+  --shadow-lg: 0 24px 70px rgba(0, 18, 0, .14);
+  --shadow-green: 0 8px 20px rgba(40, 120, 22, .24);
+  font-family: var(--font-family-base);
+  color: var(--text);
+  background: var(--surface);
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--surface);
+}
+
+body {
+  direction: rtl;
+  font-family: var(--font-family-base);
+  font-variant-numeric: tabular-nums;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  background: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.technical-code,
+.numeric-ltr {
+  direction: ltr;
+  unicode-bidi: plaintext;
+  font-family: var(--font-family-base);
+  font-variant-numeric: tabular-nums;
+}
+
+.app-shell {
+  max-width: 520px;
+  margin: auto;
+  background: var(--surface);
+  min-height: 100dvh;
+  box-shadow: 0 0 40px rgba(0, 0, 0, .04);
+}
+
+.page-bg {
+  background: var(--surface);
+}
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: #f7f9f5;
+  color: var(--ink);
+}
+
+.btn {
+  min-height: 50px;
+  border-radius: 14px;
+  padding: 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  font-weight: 800;
+  transition: .2s;
+}
+
+.btn lucide-icon {
+  width: 19px;
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: var(--shadow-green);
+}
+
+.btn.primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn.secondary {
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+}
+
+.btn.wide {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(.8);
+    opacity: .9;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: .2;
+  }
+}
+
+@media (min-width: 600px) {
+  body {
+    background: #edf0eb;
+  }
+
+  .app-shell {
+    border-inline: 1px solid var(--line);
+  }
+}

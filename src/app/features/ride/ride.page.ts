@@ -1,10 +1,11 @@
 import { Component, OnDestroy, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
+import { FaNumberPipe } from '../../shared/fa-number.pipe';
 
 @Component({
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, FaNumberPipe],
   templateUrl: './ride.page.html',
   styleUrl: './ride.page.css'
 })
